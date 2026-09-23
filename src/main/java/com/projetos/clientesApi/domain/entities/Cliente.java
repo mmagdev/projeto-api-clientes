@@ -1,24 +1,37 @@
 package com.projetos.clientesApi.domain.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
+import static jakarta.persistence.CascadeType.ALL;
+
+@Data
 @Entity
 @Table(name = "clientes")
-@Data
 public class Cliente {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "ID")
     private UUID id;
+
+    @Column(name = "nome", length = 150, nullable = false)
     private String nome;
+
+    @Column(name = "email", length = 150, nullable = false)
     private String email;
+
+    @Column(name = "cpf", length = 14, nullable = false, unique = true)
     private String cpf;
-    private Date dataNascimento;
+
+    @Column(name = "data_nascimento", nullable = false)
+    private LocalDate dataNascimento;
+
+    @OneToMany(cascade = ALL, mappedBy = "cliente")
+    @JoinColumn(name = "endereco_id")
+    private List<Endereco> enderecos;
 }
