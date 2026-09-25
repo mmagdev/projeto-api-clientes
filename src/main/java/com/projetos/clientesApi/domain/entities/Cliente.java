@@ -32,6 +32,5 @@ public class Cliente {
     private LocalDate dataNascimento;
 
     @OneToMany(cascade = ALL, mappedBy = "cliente")
-    @JoinColumn(name = "endereco_id")
     private List<Endereco> enderecos;
 }
