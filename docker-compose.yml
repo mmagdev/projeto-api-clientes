@@ -37,6 +37,15 @@ services:
       timeout: 5s
       retries: 5
 
+  adminer:
+    image: adminer
+    container_name: clientes-api-adminer
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8081:8080"
+    depends_on:
+      - postgres
+
 volumes:
   postgres_data:
   rabbitmq_data:

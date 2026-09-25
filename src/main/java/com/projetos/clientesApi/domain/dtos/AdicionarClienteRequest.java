@@ -9,7 +9,7 @@ public record AdicionarClienteRequest(
         String nome,
         String email,
         String cpf,
-        LocalDate data_nascimento,
+        LocalDate dataNascimento,
         List<AdicionarEnderecoRequest> enderecos
 ) {
 }
