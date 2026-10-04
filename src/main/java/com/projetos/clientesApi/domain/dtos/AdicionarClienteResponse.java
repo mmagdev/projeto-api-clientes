@@ -6,8 +6,8 @@ import java.util.UUID;
 
 public record AdicionarClienteResponse(
         String mensagem,
-        LocalDate dataCadastro,
         UUID id,
+        LocalDate dataCadastro,
         String nome,
         String email,
         List<EnderecoResponse> enderecos
